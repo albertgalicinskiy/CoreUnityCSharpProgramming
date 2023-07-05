@@ -33,7 +33,13 @@ public class TestScript2 : MonoBehaviour
             Destroy(enemy); // Destroy all elements with tag Enemy one by one
         }
         */
-        GameObject.Find("Cube").SetActive(false);
+        // GameObject.Find("Cube").SetActive(false);
+
+        // From one object using attached script we get access to another
+        // object and make some changes
+        // Don't search anything every frame because the game will be working slow
+        GameObject.Find("Cube").GetComponent<PlayerHealth>().lives = 9;
+        // GameObject.Find("Cube").GetComponent<Rigidbody>().useGravity = true;
         
     }
 
