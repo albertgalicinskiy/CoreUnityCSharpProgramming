@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InputTest : MonoBehaviour
 {
+
+    public float speed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,12 +54,28 @@ public class InputTest : MonoBehaviour
         }
         */
 
-
+        /*
         if ( Input.GetButtonDown("Jump") )
         {
             print("Space Button is Pressed First Time");
             
             GetComponent<Renderer>().material.color = Color.green;
         }
+        */
+
+        // Horizontal and Vertical values from Input Manager
+        // Horizontal = left and right movement
+        // Vertical = up and down movemnt
+        float xInput = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        float yInput = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+
+        print(xInput);
+
+        // Input.GetAxisRaw();
+
+        // move cube to left and right/ up and down
+        transform.Translate(xInput, yInput, 0);
+
+
     }
 }
