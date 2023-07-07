@@ -10,6 +10,11 @@ public class PhysicsTest : MonoBehaviour
     public float speed;
     public float jumpForce;
 
+    public float bulletSpeed;
+    bool shoot = false;
+    public GameObject bullet;
+    public Transform bulletpos;
+
     bool jump = false;
 
     float inputX, inputY;
@@ -39,6 +44,11 @@ public class PhysicsTest : MonoBehaviour
         {
             jump = true;
         }
+
+        if ( Input.GetButtonDown("Fire1") )
+        {
+            shoot = true;
+        }
     }
 
     void FixedUpdate() 
@@ -53,10 +63,23 @@ public class PhysicsTest : MonoBehaviour
             jump = false; // should false otherwise it will be jumping all the time becasue value will be true
         }
 
+        if ( shoot )
+        {
+            Shoot();
+
+            shoot = false;
+        }
+
     }
 
     void Jump()
     {
         rb.AddForce(0, jumpForce, 0);
+    }
+
+    void Shoot()
+    {
+        GameObject bulletSpawn = Instantiate(bullet, bulletpos.position, bullet.transform.rotation); // bullet.transform.rotation means take rotation from prefab
+        bulletSpawn.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, bulletSpeed); // move to the front direction
     }
 }
