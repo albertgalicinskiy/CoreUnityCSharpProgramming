@@ -5,7 +5,9 @@ using UnityEngine;
 public class InputTest : MonoBehaviour
 {
 
-    public float speed;
+    // public float speed;
+
+    public GameObject ball;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +65,7 @@ public class InputTest : MonoBehaviour
         }
         */
 
+        /*
         // Horizontal and Vertical values from Input Manager
         // Horizontal = left and right movement
         // Vertical = up and down movemnt
@@ -75,7 +78,49 @@ public class InputTest : MonoBehaviour
 
         // move cube to left and right/ up and down
         transform.Translate(xInput, yInput, 0);
+        */
 
 
+        //if ( Input.GetButtonDown("Fire1") ) // For all the buttons in keyboard and mouse
+        //{
+            //print("Left Click");
+        //}
+
+        // if ( Input.GetMouseButtonDown(0) ) // 0 = click left mouse button, 1 right mouse button, 2 wheel press
+        // {
+        //     // print("Left Click");
+
+        //     //print(Input.mousePosition);
+        //     print(Input.mousePosition.x + " " + Input.mousePosition.y);
+
+        //     /// When we click left mouse button the ball will apear in that place
+        //     Vector3 pos = Input.mousePosition;
+        //     pos.z = 10f;
+
+        //     pos = Camera.main.ScreenToWorldPoint(pos);
+
+        //     Instantiate(ball, pos, Quaternion.identity);
+        //     ///
+
+        // }
+
+        // if ( Input.GetMouseButtonDown(1) ) // 1 = click right mouse button
+        // {
+        //     print("Right Click");
+        // }
+
+        // if ( Input.GetMouseButtonDown(2) ) // 2 = click wheel on mouse
+        // {
+        //     print("Wheel Click");
+        // }
+
+    }
+
+
+    // It works when we attach script to the object
+    // that we want to destroy and on that object
+    // any Collider(Box, Sphere it doesn't matter) should have
+    void OnMouseDown() {
+        Destroy(gameObject);
     }
 }
